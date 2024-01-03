@@ -4,6 +4,9 @@ import random
 
 
 def Level1(x):
+    from LevelTwo import Level2
+    from MiscFunc import save_progress
+
     # Level 1
     print("Welcome to your adventure!\n")
     print("Monster #1 attacks you! Roll a number to do damage!\n")
@@ -26,6 +29,7 @@ def Level1(x):
         print(
             "No, you have missed! Fortunately the monster tripped, you get another chance!"
         )
+
         damage = int(input("Enter a number 1-" + str(x) + ": "))
         if abs(monster1 - 1) <= damage <= monster1 + 1:
             print("The beast is defeated! You continue your journey.")

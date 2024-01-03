@@ -4,6 +4,8 @@ import random
 
 
 def Level2(x):
+    from MiscFunc import save_progress
+
     print("It seems there is more to you than meets the eye, wandering warrior.\n")
     time.sleep(2)
     print(
@@ -39,7 +41,7 @@ def Level2(x):
                 time.sleep(2)
                 os.system("cls")
                 save_progress({"level": 3})
-                Level3(x)
+
             elif playerinp == 2:
                 save_progress({"level": 3})
                 exit()
@@ -72,7 +74,7 @@ def Level2(x):
                     time.sleep(2)
                     os.system("cls")
                     save_progress({"level": 3})
-                    Level3(x)
+
                 elif playerinp == 2:
                     save_progress({"level": 3})
                     exit()
@@ -80,6 +82,7 @@ def Level2(x):
                 print(
                     "No luck! While damaged, the tree manages to get the upper hand and knocks you out."
                 )
+
         else:
             print(
                 "No luck! You missed and the tree knocks you unconcious, ending your journey prematurely."
