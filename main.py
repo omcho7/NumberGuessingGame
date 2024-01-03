@@ -1,6 +1,20 @@
 import os
 import time
 import random
+import json
+
+
+def save_progress(player_data):
+    with open("player_data.json", "w") as file:
+        json.dump(player_data, file)
+
+
+def load_progress():
+    try:
+        with open("player_data.json", "r") as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return None
 
 
 def Difficulty():
@@ -32,6 +46,22 @@ def Difficulty():
 
 
 def StartGame(x):
+    player_data = load_progress()
+
+    if player_data is not None and "level" in player_data:
+        current_level = player_data["level"]
+    else:
+        current_level = 1
+
+    print("Current level: " + str(current_level) + "\n")
+
+    if current_level == 1:
+        Level1(x)
+    elif current_level == 2:
+        Level2(x)
+
+
+def Level1(x):
     # Level 1
     print("Welcome to your adventure!\n")
     print("Monster #1 attacks you! Roll a number to do damage!\n")
@@ -39,10 +69,17 @@ def StartGame(x):
     monster1 = random.randint(1, x)
     print(monster1)
     if abs(monster1 - 1) <= damage <= monster1 + 1:
-        print("The beast is defeated! You continue your journey.")
-        time.sleep(2)
-        os.system("cls")
-        Level2(x)
+        print("The beast is defeated! You continue your journey.\n")
+        playerinp = int(input("Enter 1 to continue or 2 to exit the game: "))
+        if playerinp == 1:
+            time.sleep(2)
+            os.system("cls")
+            save_progress({"level": 2})
+            Level2(x)
+        elif playerinp == 2:
+            save_progress({"level": 2})
+            exit()
+
     else:
         print(
             "No, you have missed! Fortunately the monster tripped, you get another chance!"
@@ -50,9 +87,15 @@ def StartGame(x):
         damage = int(input("Enter a number 1-" + str(x) + ": "))
         if abs(monster1 - 1) <= damage <= monster1 + 1:
             print("The beast is defeated! You continue your journey.")
-            time.sleep(2)
-            os.system("cls")
-            Level2(x)
+            playerinp = int(input("Enter 1 to continue or 2 to exit the game: "))
+            if playerinp == 1:
+                time.sleep(2)
+                os.system("cls")
+                save_progress({"level": 2})
+                Level2(x)
+            elif playerinp == 2:
+                save_progress({"level": 2})
+                exit()
         else:
             print("No luck! Attack was too weak and you have been defeated.")
 
@@ -78,6 +121,8 @@ def Level2(x):
         print(
             "Success! But that won't take it down. Attack again while it is recovering!"
         )
+        tree = random.randint(1, x)
+        print(tree)
         damage = int(input("Enter a number 1-" + str(x) + ": "))
         if abs(tree - 1) <= damage <= tree + 1:
             time.sleep(1)
@@ -86,6 +131,15 @@ def Level2(x):
             print(
                 "The demonic tree fades into obsolesence! Amazing work brave traveller, continue your journey."
             )
+            playerinp = int(input("Enter 1 to continue or 2 to exit the game: "))
+            if playerinp == 1:
+                time.sleep(2)
+                os.system("cls")
+                save_progress({"level": 3})
+                Level3(x)
+            elif playerinp == 2:
+                save_progress({"level": 3})
+                exit()
         else:
             print(
                 "No luck! While damaged, the tree manages to get the upper hand and knocks you out."
@@ -94,11 +148,15 @@ def Level2(x):
     # Second try
     else:
         print("No, you have missed! Attack the other one while it's recovering!")
+        tree = random.randint(1, x)
+        print(tree)
         damage = int(input("Enter a number 1-" + str(x) + ": "))
         if abs(tree - 1) <= damage <= tree + 1:
             print(
                 "Success! But that won't take it down. Attack again, don't let the beast rest!"
             )
+            tree = random.randint(1, x)
+            print(tree)
             damage = int(input("Enter a number 1-" + str(x) + ": "))
             if abs(tree - 1) <= damage <= tree + 1:
                 time.sleep(1)
@@ -107,6 +165,15 @@ def Level2(x):
                 print(
                     "The demonic tree fades into obsolesence! Amazing work brave traveller, continue your journey."
                 )
+                playerinp = int(input("Enter 1 to continue or 2 to exit the game: "))
+                if playerinp == 1:
+                    time.sleep(2)
+                    os.system("cls")
+                    save_progress({"level": 3})
+                    Level3(x)
+                elif playerinp == 2:
+                    save_progress({"level": 3})
+                    exit()
             else:
                 print(
                     "No luck! While damaged, the tree manages to get the upper hand and knocks you out."
