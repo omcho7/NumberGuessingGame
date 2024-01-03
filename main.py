@@ -2,6 +2,8 @@ import os
 import time
 import random
 import json
+from Level1 import Level1
+from Level2 import Level2
 
 
 def save_progress(player_data):
@@ -45,22 +47,23 @@ def Difficulty():
         return x
 
 
-def StartGame(x):
-    player_data = load_progress()
-
-    if player_data is not None and "level" in player_data:
-        current_level = player_data["level"]
-    else:
-        current_level = 1
-
-    print("Current level: " + str(current_level) + "\n")
-
-    if current_level == 1:
+def StartGame(x, new_game=False):
+    if new_game or not load_progress():
+        save_progress({"level": 1})
         Level1(x)
-    elif current_level == 2:
-        Level2(x)
+    else:
+        player_data = load_progress()
+        current_level = player_data["level"]
+        print("Currently on level " + str(current_level))
+        print("~ ~ ~ ~~~~~ ~ ~ ~ ~~~~~ ~ ~ ~ ~~~~~ ~ ~ ~ ~~~~~ \n")
+
+        if current_level == 1:
+            Level1(x)
+        elif current_level == 2:
+            Level2(x)
 
 
+"""
 def Level1(x):
     # Level 1
     print("Welcome to your adventure!\n")
@@ -121,10 +124,10 @@ def Level2(x):
         print(
             "Success! But that won't take it down. Attack again while it is recovering!"
         )
-        tree = random.randint(1, x)
-        print(tree)
+        tree1 = random.randint(1, x)
+        print(tree1)
         damage = int(input("Enter a number 1-" + str(x) + ": "))
-        if abs(tree - 1) <= damage <= tree + 1:
+        if abs(tree1 - 1) <= damage <= tree1 + 1:
             time.sleep(1)
             print(". . . .")
             time.sleep(3)
@@ -148,17 +151,16 @@ def Level2(x):
     # Second try
     else:
         print("No, you have missed! Attack the other one while it's recovering!")
-        tree = random.randint(1, x)
         print(tree)
         damage = int(input("Enter a number 1-" + str(x) + ": "))
         if abs(tree - 1) <= damage <= tree + 1:
             print(
                 "Success! But that won't take it down. Attack again, don't let the beast rest!"
             )
-            tree = random.randint(1, x)
-            print(tree)
+            tree2 = random.randint(1, x)
+            print(tree2)
             damage = int(input("Enter a number 1-" + str(x) + ": "))
-            if abs(tree - 1) <= damage <= tree + 1:
+            if abs(tree2 - 1) <= damage <= tree2 + 1:
                 time.sleep(1)
                 print(". . . .")
                 time.sleep(3)
@@ -182,24 +184,30 @@ def Level2(x):
             print(
                 "No luck! You missed and the tree knocks you unconcious, ending your journey prematurely."
             )
+"""
 
 
 def MainMenu():
     print("---------------Main Menu---------------")
     print("\n")
-    print("             1. Start Game             ")
-    print("                2. Exit                ")
+    print("             1. New Game               ")
+    print("         2. Continue Last Save         ")
+    print("                3. Exit                ")
     print("\n")
-    mmchoice = int(input("Choose option (1, 2): "))
+    mmchoice = int(input("Choose option (1, 2, 3): "))
 
-    while mmchoice != 1 and mmchoice != 2:
+    while mmchoice != 1 and mmchoice != 2 and mmchoice != 3:
         mmchoice = int(input("Incorrect value, choose option (1, 2): "))
 
     if mmchoice == 1:
         os.system("cls")
         x = Difficulty()
+        StartGame(x, new_game=True)
+    if mmchoice == 2:
+        os.system("cls")
+        x = Difficulty()
         StartGame(x)
-    elif mmchoice == 2:
+    elif mmchoice == 3:
         exit()
 
 
