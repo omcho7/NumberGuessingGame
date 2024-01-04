@@ -1,4 +1,5 @@
 import json
+import time
 
 
 def save_progress(player_data):
@@ -12,6 +13,26 @@ def load_progress():
             return json.load(file)
     except FileNotFoundError:
         return None
+
+
+def typewriterS(text, delay=0.05):
+    for char in text:
+        print(char, end="", flush=True)
+        time.sleep(delay)
+    print()  # Move to the next line after printing the whole text
+
+
+def typewriterSNL(text, delay=0.05):
+    for char in text:
+        print(char, end="", flush=True)
+        time.sleep(delay)
+
+
+def typewriterF(text, delay=0.02):
+    for char in text:
+        print(char, end="", flush=True)
+        time.sleep(delay)
+    print()
 
 
 def StartGame(x, new_game=False):

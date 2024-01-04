@@ -4,22 +4,22 @@ import random
 
 
 def Level3(x):
-    from MiscFunc import save_progress
+    from MiscFunc import save_progress, typewriterF, typewriterS, typewriterSNL
 
-    print(
+    typewriterS(
         "The days ahead seem long and wary, how long until the famous treasure is in sight.\n"
     )
-    time.sleep(2.5)
-    print(
+
+    typewriterS(
         "Nobody knows, perhaps because little to no man tried his luck on this path...\n"
     )
-    time.sleep(2.5)
-    print("Or none have lived to tell the tale...")
-    time.sleep(2)
-    print(
+
+    typewriterS("Or none have lived to tell the tale...")
+
+    typewriterS(
         "Before you, two paths are given, one leading over the fiery depths of Mount Blaviken (1),"
     )
-    print(
+    typewriterS(
         "the other, through the ice giant Kingdom of Kaldur (2), which do you choose?"
     )
 
@@ -33,57 +33,57 @@ def Level3(x):
         if path == 1:
             os.system("cls")
             time.sleep(1)
-            print(
+            typewriterS(
                 "The flame in your heart, burning for the thrill sets you out on the trail over Mount Blaviken."
             )
-            time.sleep(2)
-            print(
+
+            typewriterS(
                 "On your way you encounter a scaly red dragon, stopping you from getting over the bridge to your next destination."
             )
-            print(
+            typewriterS(
                 "It lets out a loud roar, spewing fire out to the sky. It looks at you with yellow eyes of superiority, and asks you:\n"
             )
-            print(
+            typewriterS(
                 "Foolish soul, I have heard of your mission to uncover the treasure of our lands. If you answer my riddle, I will let you through."
             )
-            print("If not, ")
-            time.sleep(2)
-            print(
+            typewriterS("If not, ")
+
+            typewriterS(
                 "I will let out my wrath onto your poor kind, and feed myself to a fine lunch."
             )
             daughters = random.randint(1, x)
             brothers = random.randint(1, x)
-            print(
-                "My father, the dragon king, has ",
-                daughters,
-                " princess daughters, waiting for his throne. Each of them has ",
-                brothers,
-                " older dragon brothers.",
+            typewriterSNL("My father, the dragon king, has ")
+            print(daughters),
+            typewriterSNL(
+                " princess daughters, waiting for his throne. Each of them has "
             )
+            print(brothers)
+            typewriterSNL(" older dragon brothers.")
+
+            time.sleep(0.5)
             answer = int(
                 input(
                     "How many descendants will have a chance at the kings pedestal? :"
                 )
             )
             if answer != brothers:
-                time.sleep(1)
-                print(". . . .")
-                time.sleep(3)
-                print(
+                typewriterS(". . . .")
+                time.sleep(2)
+                typewriterS(
                     "Wrong you fool! - the Dragon exclaims, burning you to a fine crisp and ending your journey in the bowels of the beast."
                 )
                 save_progress({"level": 3})
                 exit()
 
             else:
-                time.sleep(1)
-                print(". . . .")
-                time.sleep(3)
-                print(
+                typewriterS(". . . .")
+                time.sleep(2)
+                typewriterS(
                     "You seem more intelligent than you look. I will let you through this time, struggler.\n"
                 )
                 time.sleep(2)
-                print(
+                typewriterS(
                     "Success! That was a close one, best of luck warrior, you are getting closer and closer to your goal."
                 )
                 playerinp = int(input("Enter 1 to continue or 2 to exit the game: "))
@@ -99,66 +99,66 @@ def Level3(x):
         elif path == 2:
             os.system("cls")
             time.sleep(1)
-            print(
+            typewriterS(
                 "I see your heart is cold and unruly to the dangers ahead of Kingdom of Kaldur, brave one."
             )
-            time.sleep(2)
-            print(
+
+            typewriterS(
                 "You traverse through their town, filled with towering ice beings, but seemingly not hostile towards you."
             )
-            print("Perhaps you are just a lost insect in their world.")
-            time.sleep(2)
-            print(
+            typewriterS("Perhaps you are just a lost insect in their world.")
+
+            typewriterS(
                 "You find the exit gate. Thank god, you must think. Managed to escape without any conflict."
             )
-            time.sleep(2)
-            print(
+
+            typewriterS(
                 "Unfortunately two frost giants, each 15 meters tall, are seen guarding the thick steel gate leading out of the town."
             )
-            print(
+            typewriterS(
                 "One says to the other: 'It seems that we have a tresspassing guest within our tribe. Let's have fun with this one'.\n"
             )
-            print(
+            typewriterS(
                 "'Foolish soul, I have heard of your mission to uncover the treasure of our lands. If you answer our riddle, I will let you through.'"
             )
-            print("'If not, ")
-            time.sleep(2)
-            print(
+            typewriterS("'If not, ")
+
+            typewriterS(
                 "'Us ice giant have a sweet spot in our stomachs for human meat. So riddle me this tiny man:' "
             )
             daughters = random.randint(1, x)
             brothers = random.randint(1, x)
-            print(
-                "'My father, Lord Bjorn, ice heart of Kaldur, has ",
-                daughters,
-                " princess daughters, waiting for his throne. Each of them has ",
-                brothers,
-                " older frost giant brothers.",
+            typewriterSNL("'My father, Lord Bjorn, ice heart of Kaldur, has ")
+            print(daughters)
+            typewriterSNL(
+                " princess daughters, waiting for his throne. Each of them has "
             )
+            print(brothers)
+            typewriterS(" older frost giant brothers.")
+
+            time.sleep(0.5)
             answer = int(
                 input(
                     "How many descendants will have a chance at the kings pedestal? :"
                 )
             )
             if answer != brothers:
-                time.sleep(1)
-                print(". . . .")
-                time.sleep(3)
-                print(
+                typewriterS(". . . .")
+                time.sleep(2)
+                typewriterS(
                     "Wrong you fool! - the giant exclaims, trapping and freezing you to death. He splits the share and eats you with his other ice giant comrades."
                 )
                 save_progress({"level": 3})
                 exit()
 
             else:
-                time.sleep(1)
-                print(". . . .")
-                time.sleep(3)
-                print(
+                typewriterS(". . . .")
+                time.sleep(2)
+                typewriterS(
                     "Hmm, You seem more intelligent than you look. I will let you through this time, struggler.\n"
                 )
                 time.sleep(2)
-                print(
+                typewriterS(
                     "Success! That was a close one, best of luck warrior, you are getting closer and closer to your goal."
                 )
                 playerinp = int(input("Enter 1 to continue or 2 to exit the game: "))
