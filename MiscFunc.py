@@ -17,6 +17,7 @@ def load_progress():
 def StartGame(x, new_game=False):
     from LevelOne import Level1
     from LevelTwo import Level2
+    from LevelThree import Level3
 
     if new_game or not load_progress():
         save_progress({"level": 1})
@@ -31,3 +32,5 @@ def StartGame(x, new_game=False):
             Level1(x)
         elif current_level == 2:
             Level2(x)
+        elif current_level == 3:
+            Level3(x)

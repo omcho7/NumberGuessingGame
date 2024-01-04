@@ -5,6 +5,7 @@ import random
 
 def Level2(x):
     from MiscFunc import save_progress
+    from LevelThree import Level3
 
     print("It seems there is more to you than meets the eye, wandering warrior.\n")
     time.sleep(2)
@@ -27,6 +28,12 @@ def Level2(x):
             "Success! But that won't take it down. Attack again while it is recovering!"
         )
         tree1 = random.randint(1, x)
+
+        if tree1 > damage:
+            print("Strike with more power!")
+        else:
+            print("Less power, more technique!")
+
         print(tree1)
         damage = int(input("Enter a number 1-" + str(x) + ": "))
         if abs(tree1 - 1) <= damage <= tree1 + 1:
@@ -41,25 +48,42 @@ def Level2(x):
                 time.sleep(2)
                 os.system("cls")
                 save_progress({"level": 3})
-
+                Level3(x)
             elif playerinp == 2:
                 save_progress({"level": 3})
                 exit()
         else:
+            time.sleep(1)
+            print(". . . .")
+            time.sleep(3)
             print(
                 "No luck! While damaged, the tree manages to get the upper hand and knocks you out."
             )
+            save_progress({"level": 2})
+            exit()
 
     # Second try
     else:
         print("No, you have missed! Attack the other one while it's recovering!")
         print(tree)
+
+        if tree > damage:
+            print("Strike with more power!")
+        else:
+            print("Less power, more technique!")
+
         damage = int(input("Enter a number 1-" + str(x) + ": "))
         if abs(tree - 1) <= damage <= tree + 1:
             print(
                 "Success! But that won't take it down. Attack again, don't let the beast rest!"
             )
             tree2 = random.randint(1, x)
+
+            if tree2 > damage:
+                print("Strike with more power!")
+            else:
+                print("Less power, more technique!")
+
             print(tree2)
             damage = int(input("Enter a number 1-" + str(x) + ": "))
             if abs(tree2 - 1) <= damage <= tree2 + 1:
@@ -74,16 +98,26 @@ def Level2(x):
                     time.sleep(2)
                     os.system("cls")
                     save_progress({"level": 3})
-
+                    Level3(x)
                 elif playerinp == 2:
                     save_progress({"level": 3})
                     exit()
             else:
+                time.sleep(1)
+                print(". . . .")
+                time.sleep(3)
                 print(
                     "No luck! While damaged, the tree manages to get the upper hand and knocks you out."
                 )
+                save_progress({"level": 2})
+                exit()
 
         else:
+            time.sleep(1)
+            print(". . . .")
+            time.sleep(3)
             print(
                 "No luck! You missed and the tree knocks you unconcious, ending your journey prematurely."
             )
+            save_progress({"level": 2})
+            exit()
