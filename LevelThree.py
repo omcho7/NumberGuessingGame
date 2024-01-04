@@ -4,17 +4,18 @@ import random
 
 
 def Level3(x):
+    # from LevelFour import Level4
     from MiscFunc import save_progress, typewriterF, typewriterS, typewriterSNL
 
     typewriterS(
-        "The days ahead seem long and wary, how long until the famous treasure is in sight.\n"
+        "The days ahead seem long and wary, how long until the famous treasure is in sight."
     )
 
     typewriterS(
-        "Nobody knows, perhaps because little to no man tried his luck on this path...\n"
+        "Nobody knows, perhaps because little to no man tried his luck on this path..."
     )
 
-    typewriterS("Or none have lived to tell the tale...")
+    typewriterS("Or none have lived to tell the tale...\n")
 
     typewriterS(
         "Before you, two paths are given, one leading over the fiery depths of Mount Blaviken (1),"
@@ -41,30 +42,32 @@ def Level3(x):
                 "On your way you encounter a scaly red dragon, stopping you from getting over the bridge to your next destination."
             )
             typewriterS(
-                "It lets out a loud roar, spewing fire out to the sky. It looks at you with yellow eyes of superiority, and asks you:\n"
+                "It lets out a loud roar, spewing fire out to the sky. It looks at you with yellow eyes of superiority, and exclaims:\n"
             )
             typewriterS(
-                "Foolish soul, I have heard of your mission to uncover the treasure of our lands. If you answer my riddle, I will let you through."
+                "'Foolish soul, I have heard of your mission to uncover the treasure of our lands. If you answer my riddle, I will let you through."
             )
             typewriterS("If not, ")
 
             typewriterS(
-                "I will let out my wrath onto your poor kind, and feed myself to a fine lunch."
+                "I will let out my wrath onto your poor kind, and feed myself to a fine lunch.'\n"
             )
+
             daughters = random.randint(1, x)
             brothers = random.randint(1, x)
-            typewriterSNL("My father, the dragon king, has ")
+            typewriterSNL("'My father, the dragon king, has ")
             print(daughters),
             typewriterSNL(
                 " princess daughters, waiting for his throne. Each of them has "
             )
             print(brothers)
-            typewriterSNL(" older dragon brothers.")
+            typewriterSNL(" older dragon brothers.'")
 
-            time.sleep(0.5)
+            time.sleep(1)
+            print("\n")
             answer = int(
                 input(
-                    "How many descendants will have a chance at the kings pedestal? :"
+                    "'How many descendants will have a chance at the kings pedestal?' :"
                 )
             )
             if answer != brothers:
@@ -91,7 +94,7 @@ def Level3(x):
                     time.sleep(2)
                     os.system("cls")
                     save_progress({"level": 4})
-                    Level3(x)
+                    Level4(x)
                 elif playerinp == 2:
                     save_progress({"level": 4})
                     exit()
@@ -166,7 +169,7 @@ def Level3(x):
                     time.sleep(2)
                     os.system("cls")
                     save_progress({"level": 4})
-                    Level3(x)
+                    Level4(x)
                 elif playerinp == 2:
                     save_progress({"level": 4})
                     exit()

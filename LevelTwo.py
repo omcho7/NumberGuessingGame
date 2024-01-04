@@ -29,6 +29,7 @@ def Level2(x):
         typewriterF(
             "Success! But that won't take it down. Attack again while it is recovering!"
         )
+
         tree1 = random.randint(1, x)
 
         if tree1 > damage:
@@ -77,6 +78,7 @@ def Level2(x):
             typewriterF(
                 "Success! But that won't take it down. Attack again, don't let the beast rest!"
             )
+
             tree2 = random.randint(1, x)
 
             if tree2 > damage:

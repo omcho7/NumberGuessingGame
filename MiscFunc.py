@@ -2,11 +2,13 @@ import json
 import time
 
 
+# function for saving progress
 def save_progress(player_data):
     with open("player_data.json", "w") as file:
         json.dump(player_data, file)
 
 
+# function for loading progress
 def load_progress():
     try:
         with open("player_data.json", "r") as file:
@@ -15,6 +17,7 @@ def load_progress():
         return None
 
 
+# typewriter effect functions, all the same but with different speeds
 def typewriterS(text, delay=0.05):
     for char in text:
         print(char, end="", flush=True)
@@ -35,6 +38,7 @@ def typewriterF(text, delay=0.02):
     print()
 
 
+# function to start and load game based on the saved level
 def StartGame(x, new_game=False):
     from LevelOne import Level1
     from LevelTwo import Level2
