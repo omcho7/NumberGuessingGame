@@ -3,9 +3,10 @@ import os
 import random
 
 
-def Level1(x):
+def Level1(x, current_points):
     from LevelTwo import Level2
     from MiscFunc import save_progress, typewriterF, typewriterS
+    from Mechanics import Combat
 
     # Level 1
     typewriterS("Welcome adventurer!\n")
@@ -22,11 +23,44 @@ def Level1(x):
         "Armed with a map, a sword and a lions heart, you make your way through the forest keeping an eye on any foes.\n"
     )
     typewriterF(
-        "Suddednly a werewolf stops you on your path! 'Back where you came from, or face your doom!'"
+        "Suddenly a werewolf stops you on your path! 'Back where you came from, or face your doom!'"
     )
     time.sleep(1)
     typewriterF("He leaps at you! Counter with your sword!\n")
-    damage = int(input("Enter a number 1-" + str(x) + ": "))
+
+    # After the narrative, the combat (number-guessing part) begins:
+
+    success, points = Combat(x, 3, current_points)
+
+    if success:
+        current_points += points
+        typewriterF("But that won't take it down, quickly strike again!")
+
+        success2, points2 = Combat(x, 3, current_points)
+
+        if success2:
+            current_points += points2
+            typewriterS(
+                "The beast is defeated! You have proved yourself and continue the journey.\n"
+            )
+            playerinp = int(input("Enter 1 to continue or 2 to exit the game: "))
+            if playerinp == 1:
+                time.sleep(2)
+                os.system("cls")
+                save_progress({"level": 2, "points": current_points})
+                Level2(
+                    x
+                )  # Player chooses to continue, goes to Level 2, progress is saved.
+            elif playerinp == 2:
+                save_progress({"level": 2, "points": current_points})
+                exit()  # Player chooses to exit, terminates program, progress is saved.
+
+    else:
+        save_progress(
+            {"level": 1, "points": current_points}
+        )  # Player fails, progress is set to the level that is failed.
+
+    """damage = int(input("Enter a number 1-" + str(x) + ": "))
     monster1 = random.randint(1, x)
     print(monster1)
     if abs(monster1 - 1) <= damage <= monster1 + 1:
@@ -77,3 +111,4 @@ def Level1(x):
             save_progress(
                 {"level": 1}
             )  # Player fails, progress is set to the level that is failed.
+    """

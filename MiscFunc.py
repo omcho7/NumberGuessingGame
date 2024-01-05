@@ -18,20 +18,20 @@ def load_progress():
 
 
 # typewriter effect functions, all the same but with different speeds
-def typewriterS(text, delay=0.05):
+def typewriterS(text, delay=0.03):
     for char in text:
         print(char, end="", flush=True)
         time.sleep(delay)
     print()  # Move to the next line after printing the whole text
 
 
-def typewriterSNL(text, delay=0.05):
+def typewriterSNL(text, delay=0.03):
     for char in text:
         print(char, end="", flush=True)
         time.sleep(delay)
 
 
-def typewriterF(text, delay=0.02):
+def typewriterF(text, delay=0.015):
     for char in text:
         print(char, end="", flush=True)
         time.sleep(delay)
@@ -45,17 +45,20 @@ def StartGame(x, new_game=False):
     from LevelThree import Level3
 
     if new_game or not load_progress():
-        save_progress({"level": 1})
-        Level1(x)
+        current_points = 0
+        save_progress({"level": 1, "points": current_points})
+        Level1(x, current_points)
     else:
         player_data = load_progress()
         current_level = player_data["level"]
+        current_points = player_data["points"]
         print("Currently on level " + str(current_level))
+        print("Score: " + str(current_points))
         print("~ ~ ~ ~~~~~ ~ ~ ~ ~~~~~ ~ ~ ~ ~~~~~ ~ ~ ~ ~~~~~ \n")
 
         if current_level == 1:
-            Level1(x)
+            Level1(x, current_points)
         elif current_level == 2:
-            Level2(x)
+            Level2(x, current_points)
         elif current_level == 3:
-            Level3(x)
+            Level3(x, current_points)
