@@ -23,12 +23,14 @@ def typewriterS(text, delay=0.03):
         print(char, end="", flush=True)
         time.sleep(delay)
     print()  # Move to the next line after printing the whole text
+    return ""
 
 
 def typewriterSNL(text, delay=0.03):
     for char in text:
         print(char, end="", flush=True)
         time.sleep(delay)
+    return ""
 
 
 def typewriterF(text, delay=0.015):
@@ -36,6 +38,7 @@ def typewriterF(text, delay=0.015):
         print(char, end="", flush=True)
         time.sleep(delay)
     print()
+    return ""
 
 
 # function to start and load saved levels and points
@@ -43,6 +46,7 @@ def StartGame(x, new_game=False):
     from LevelOne import Level1
     from LevelTwo import Level2
     from LevelThree import Level3
+    from LevelFour import Level4
 
     if new_game or not load_progress():
         current_points = 0
@@ -53,7 +57,6 @@ def StartGame(x, new_game=False):
         current_level = player_data["level"]
         current_points = player_data["points"]
         print("Currently on level " + str(current_level))
-        print("Score: " + str(current_points))
         print("~ ~ ~ ~~~~~ ~ ~ ~ ~~~~~ ~ ~ ~ ~~~~~ ~ ~ ~ ~~~~~ \n")
 
         if current_level == 1:
@@ -62,3 +65,5 @@ def StartGame(x, new_game=False):
             Level2(x, current_points)
         elif current_level == 3:
             Level3(x, current_points)
+        elif current_level == 4:
+            Level4(x, current_points)

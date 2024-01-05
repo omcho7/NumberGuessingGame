@@ -4,7 +4,7 @@ import random
 
 
 def Level3(x, current_points):
-    # from LevelFour import Level4
+    from LevelFour import Level4
     from MiscFunc import save_progress, typewriterF, typewriterS, typewriterSNL
     from Mechanics import Combat
 
