@@ -49,7 +49,7 @@ def Level1(x, current_points):
                 os.system("cls")
                 save_progress({"level": 2, "points": current_points})
                 Level2(
-                    x
+                    x, current_points
                 )  # Player chooses to continue, goes to Level 2, progress is saved.
             elif playerinp == 2:
                 save_progress({"level": 2, "points": current_points})

@@ -47,7 +47,7 @@ def Level2(x, current_points):
                     os.system("cls")
                     save_progress({"level": 3, "points": current_points})
                     Level3(
-                        x
+                        x, current_points
                     )  # Player chooses to continue, goes to Level 2, progress is saved.
                 elif playerinp == 2:
                     save_progress({"level": 3, "points": current_points})
@@ -66,106 +66,3 @@ def Level2(x, current_points):
         save_progress(
             {"level": 2, "points": 0}
         )  # Player fails, progress is set to the level that is failed.
-
-    """typewriterF("Quickly, cut the branch with your sword!")
-    damage = int(input("Enter a number 1-" + str(x) + ": "))
-    tree = random.randint(1, x)
-    print(tree)
-
-    # First try
-    if abs(tree - 1) <= damage <= tree + 1:
-        typewriterF(
-            "Success! But that won't take it down. Attack again while it is recovering!"
-        )
-
-        tree1 = random.randint(1, x)
-
-        if tree1 > damage:
-            typewriterF("Strike with more power!")
-        else:
-            typewriterF("Less power, more technique!")
-
-        print(tree1)
-        damage = int(input("Enter a number 1-" + str(x) + ": "))
-        if abs(tree1 - 1) <= damage <= tree1 + 1:
-            typewriterS(". . . .")
-            time.sleep(2)
-            typewriterS(
-                "The demonic tree fades into obsolesence! Amazing work brave traveller, continue your journey."
-            )
-            playerinp = int(input("Enter 1 to continue or 2 to exit the game: "))
-            if playerinp == 1:
-                time.sleep(2)
-                os.system("cls")
-                save_progress({"level": 3})
-                Level3(x)
-            elif playerinp == 2:
-                save_progress({"level": 3})
-                exit()
-        else:
-            typewriterS(". . . .")
-            time.sleep(2)
-            typewriterS(
-                "No luck! While damaged, the tree manages to get the upper hand and knocks you out."
-            )
-            save_progress({"level": 2})
-            exit()
-
-    # Second try
-    else:
-        typewriterF("No, you have missed! Attack the other one while it's recovering!")
-        print(tree)
-
-        if tree > damage:
-            typewriterF("Strike with more power!")
-        else:
-            typewriterF("Less power, more technique!")
-
-        damage = int(input("Enter a number 1-" + str(x) + ": "))
-        if abs(tree - 1) <= damage <= tree + 1:
-            typewriterF(
-                "Success! But that won't take it down. Attack again, don't let the beast rest!"
-            )
-
-            tree2 = random.randint(1, x)
-
-            if tree2 > damage:
-                typewriterF("Strike with more power!")
-            else:
-                typewriterF("Less power, more technique!")
-
-            print(tree2)
-            damage = int(input("Enter a number 1-" + str(x) + ": "))
-            if abs(tree2 - 1) <= damage <= tree2 + 1:
-                print(". . . .")
-                time.sleep(2)
-                typewriterS(
-                    "The demonic tree fades into obsolesence! Amazing work brave traveller, continue your journey."
-                )
-                playerinp = int(input("Enter 1 to continue or 2 to exit the game: "))
-                if playerinp == 1:
-                    time.sleep(2)
-                    os.system("cls")
-                    save_progress({"level": 3})
-                    Level3(x)
-                elif playerinp == 2:
-                    save_progress({"level": 3})
-                    exit()
-            else:
-                typewriterS(". . . .")
-                time.sleep(2)
-                typewriterS(
-                    "No luck! While damaged, the tree manages to get the upper hand and knocks you out."
-                )
-                save_progress({"level": 2})
-                exit()
-
-        else:
-            typewriterS(". . . .")
-            time.sleep(2)
-            typewriterS(
-                "No luck! You missed and the tree knocks you unconcious, ending your journey prematurely."
-            )
-            save_progress({"level": 2})
-            exit()
-"""

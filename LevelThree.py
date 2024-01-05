@@ -70,7 +70,9 @@ def Level3(x, current_points):
             print("\n")
             answer = int(
                 input(
-                    f"'How many descendants will have a chance at the kings pedestal?'\n Answer (Type 'x' for trial by combat!):"
+                    typewriterS(
+                        "'How many descendants will have a chance at the kings pedestal?'\n Answer (Type 'x' for trial by combat!):"
+                    )
                 )
             )
             if answer != brothers:
@@ -96,7 +98,7 @@ def Level3(x, current_points):
                         time.sleep(2)
                         os.system("cls")
                         save_progress({"level": 4, "points": current_points})
-                        Level4(x)
+                        Level4(x, current_points)
                     elif playerinp == 2:
                         save_progress({"level": 4, "points": current_points})
                         exit()
@@ -122,7 +124,7 @@ def Level3(x, current_points):
                     time.sleep(2)
                     os.system("cls")
                     save_progress({"level": 4, "points": current_points})
-                    Level4(x)
+                    Level4(x, current_points)
                 elif playerinp == 2:
                     save_progress({"level": 4, "points": current_points})
                     exit()
@@ -172,7 +174,9 @@ def Level3(x, current_points):
             time.sleep(0.5)
             answer = int(
                 input(
-                    "How many descendants will have a chance at the kings pedestal? \n Answer (Type 'x' for trial by combat!):"
+                    typewriterS(
+                        "How many descendants will have a chance at the kings pedestal? \n Answer (Type 'x' for trial by combat!):"
+                    )
                 )
             )
             if answer != brothers:
@@ -198,7 +202,7 @@ def Level3(x, current_points):
                         time.sleep(2)
                         os.system("cls")
                         save_progress({"level": 4, "points": current_points})
-                        Level4(x)
+                        Level4(x, current_points)
                     elif playerinp == 2:
                         save_progress({"level": 4, "points": current_points})
                         exit()
@@ -224,7 +228,7 @@ def Level3(x, current_points):
                     time.sleep(2)
                     os.system("cls")
                     save_progress({"level": 4, "points": current_points})
-                    Level4(x)
+                    Level4(x, current_points)
                 elif playerinp == 2:
                     save_progress({"level": 4, "points": current_points})
                     exit()

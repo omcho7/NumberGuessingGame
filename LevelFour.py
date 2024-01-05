@@ -2,6 +2,7 @@ import time
 import os
 import random
 import subprocess
+import sys
 
 
 def Level4(x, current_points):
@@ -62,9 +63,11 @@ How many days make up our earthly sphere?'"""
                 )
                 answer4 = int(input(":"))
                 if answer4 == 365 + 8 + 7:
-                    subprocess.run(["python", "Firework.py"])
-                    time.sleep(5)
-                    current_points += 1000
+                    script_directory = os.path.dirname(sys.argv[0])
+                    script_path = os.path.join(script_directory, "Firework.py")
+                    subprocess.Popen([sys.executable, script_path]).wait()
+                    # time.sleep(3)
+                    current_points *= 100
                     os.system("cls")
                     save_progress({"level": 4, "points": current_points})
                     player_data = load_progress()
@@ -73,3 +76,30 @@ How many days make up our earthly sphere?'"""
                         "Congratulations! You have successfully beaten the game!"
                     )
                     typewriterS(f"Your final score is: {total_score}")
+                    typewriterS("Press any button to exit...")
+                    input()
+                    exit()
+
+                else:
+                    typewriterS(
+                        "'It seems that you lack the mental power to handle the sacred treasure. I banish you from this realm!'\n So close, yet so far away. You failed the wizards request and have been banished."
+                    )
+                    save_progress({"level": 4, "points": current_points})
+
+            else:
+                typewriterS(
+                    "'It seems that you lack the mental power to handle the sacred treasure. I banish you from this realm!'\n So close, yet so far away. You failed the wizards request and have been banished."
+                )
+                save_progress({"level": 4, "points": current_points})
+
+        else:
+            typewriterS(
+                "'It seems that you lack the mental power to handle the sacred treasure. I banish you from this realm!'\n So close, yet so far away. You failed the wizards request and have been banished."
+            )
+            save_progress({"level": 4, "points": current_points})
+
+    else:
+        typewriterS(
+            "'It seems that you lack the mental power to handle the sacred treasure. I banish you from this realm!'\n So close, yet so far away. You failed the wizards request and have been banished."
+        )
+        save_progress({"level": 4, "points": current_points})
