@@ -38,7 +38,7 @@ def typewriterF(text, delay=0.015):
     print()
 
 
-# function to start and load game based on the saved level
+# function to start and load saved levels and points
 def StartGame(x, new_game=False):
     from LevelOne import Level1
     from LevelTwo import Level2

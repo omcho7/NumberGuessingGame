@@ -3,9 +3,10 @@ import os
 import random
 
 
-def Level3(x):
+def Level3(x, current_points):
     # from LevelFour import Level4
     from MiscFunc import save_progress, typewriterF, typewriterS, typewriterSNL
+    from Mechanics import Combat
 
     typewriterS(
         "The days ahead seem long and wary, how long until the famous treasure is in sight."
@@ -31,6 +32,8 @@ def Level3(x):
             diffchoice = int(input("Incorrect value, choose option (1 or 2): "))
 
     else:
+        # If chosen path is 1
+
         if path == 1:
             os.system("cls")
             time.sleep(1)
@@ -67,7 +70,7 @@ def Level3(x):
             print("\n")
             answer = int(
                 input(
-                    "'How many descendants will have a chance at the kings pedestal?' :"
+                    f"'How many descendants will have a chance at the kings pedestal?'\n Answer (Type 'x' for trial by combat!):"
                 )
             )
             if answer != brothers:
@@ -76,8 +79,32 @@ def Level3(x):
                 typewriterS(
                     "Wrong you fool! - the Dragon exclaims, burning you to a fine crisp and ending your journey in the bowels of the beast."
                 )
-                save_progress({"level": 3})
+                save_progress({"level": 3, "points": current_points})
                 exit()
+
+            elif answer == "x" or answer == "X":
+                success, points = Combat(x, 2, current_points)
+                if success:
+                    current_points += points
+                    typewriterF(
+                        "'Impossible! You got away this time scum!' - the dragon exclaims, what sheer luck, you manage to escape and flee Mount Blaviken..."
+                    )
+                    playerinp = int(
+                        input("Enter 1 to continue or 2 to exit the game: ")
+                    )
+                    if playerinp == 1:
+                        time.sleep(2)
+                        os.system("cls")
+                        save_progress({"level": 4, "points": current_points})
+                        Level4(x)
+                    elif playerinp == 2:
+                        save_progress({"level": 4, "points": current_points})
+                        exit()
+                else:
+                    typewriterS(
+                        "High risk, high reward. Unfortunately no reward for you, traveller. Your lack of wit gets you burned by the dragon."
+                    )
+                    save_progress({"level": 3, "points": current_points})
 
             else:
                 typewriterS(". . . .")
@@ -85,6 +112,7 @@ def Level3(x):
                 typewriterS(
                     "You seem more intelligent than you look. I will let you through this time, struggler.\n"
                 )
+                current_points += 20
                 time.sleep(2)
                 typewriterS(
                     "Success! That was a close one, best of luck warrior, you are getting closer and closer to your goal."
@@ -93,11 +121,13 @@ def Level3(x):
                 if playerinp == 1:
                     time.sleep(2)
                     os.system("cls")
-                    save_progress({"level": 4})
+                    save_progress({"level": 4, "points": current_points})
                     Level4(x)
                 elif playerinp == 2:
-                    save_progress({"level": 4})
+                    save_progress({"level": 4, "points": current_points})
                     exit()
+
+        # If chosen path is 2
 
         elif path == 2:
             os.system("cls")
@@ -112,7 +142,7 @@ def Level3(x):
             typewriterS("Perhaps you are just a lost insect in their world.")
 
             typewriterS(
-                "You find the exit gate. Thank god, you must think. Managed to escape without any conflict."
+                "You find the exit gate. Thank God, you must think. Managed to escape without any conflict."
             )
 
             typewriterS(
@@ -142,17 +172,41 @@ def Level3(x):
             time.sleep(0.5)
             answer = int(
                 input(
-                    "How many descendants will have a chance at the kings pedestal? :"
+                    "How many descendants will have a chance at the kings pedestal? \n Answer (Type 'x' for trial by combat!):"
                 )
             )
             if answer != brothers:
                 typewriterS(". . . .")
                 time.sleep(2)
                 typewriterS(
-                    "Wrong you fool! - the giant exclaims, trapping and freezing you to death. He splits the share and eats you with his other ice giant comrades."
+                    "Wrong you fool! - the giant exclaims, trapping and freezing you to death. He shares your remains with his comrades for a fine lunch."
                 )
-                save_progress({"level": 3})
+                save_progress({"level": 3, "points": current_points})
                 exit()
+
+            elif answer == "x" or answer == "X":
+                success, points = Combat(x, 2, current_points)
+                if success:
+                    current_points += points
+                    typewriterF(
+                        "'Impossible! You got away this time puny human!' - the giant exclaims, what sheer luck, you manage to escape and flee Kaldur..."
+                    )
+                    playerinp = int(
+                        input("Enter 1 to continue or 2 to exit the game: ")
+                    )
+                    if playerinp == 1:
+                        time.sleep(2)
+                        os.system("cls")
+                        save_progress({"level": 4, "points": current_points})
+                        Level4(x)
+                    elif playerinp == 2:
+                        save_progress({"level": 4, "points": current_points})
+                        exit()
+                else:
+                    typewriterS(
+                        "High risk, high reward. Unfortunately no reward for you, traveller. Your lack of wit gets you stomped to death by the giant."
+                    )
+                    save_progress({"level": 3, "points": current_points})
 
             else:
                 typewriterS(". . . .")
@@ -160,6 +214,7 @@ def Level3(x):
                 typewriterS(
                     "Hmm, You seem more intelligent than you look. I will let you through this time, struggler.\n"
                 )
+                current_points += 20
                 time.sleep(2)
                 typewriterS(
                     "Success! That was a close one, best of luck warrior, you are getting closer and closer to your goal."
@@ -168,8 +223,8 @@ def Level3(x):
                 if playerinp == 1:
                     time.sleep(2)
                     os.system("cls")
-                    save_progress({"level": 4})
+                    save_progress({"level": 4, "points": current_points})
                     Level4(x)
                 elif playerinp == 2:
-                    save_progress({"level": 4})
+                    save_progress({"level": 4, "points": current_points})
                     exit()

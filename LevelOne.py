@@ -30,13 +30,13 @@ def Level1(x, current_points):
 
     # After the narrative, the combat (number-guessing part) begins:
 
-    success, points = Combat(x, 3, current_points)
+    success, points = Combat(x, 4, current_points)
 
     if success:
         current_points += points
         typewriterF("But that won't take it down, quickly strike again!")
 
-        success2, points2 = Combat(x, 3, current_points)
+        success2, points2 = Combat(x, 4, current_points)
 
         if success2:
             current_points += points2
@@ -55,60 +55,16 @@ def Level1(x, current_points):
                 save_progress({"level": 2, "points": current_points})
                 exit()  # Player chooses to exit, terminates program, progress is saved.
 
-    else:
-        save_progress(
-            {"level": 1, "points": current_points}
-        )  # Player fails, progress is set to the level that is failed.
-
-    """damage = int(input("Enter a number 1-" + str(x) + ": "))
-    monster1 = random.randint(1, x)
-    print(monster1)
-    if abs(monster1 - 1) <= damage <= monster1 + 1:
-        typewriterS(
-            "The beast is defeated! You have proved yourself and continue the journey.\n"
-        )
-        playerinp = int(input("Enter 1 to continue or 2 to exit the game: "))
-        if playerinp == 1:
-            time.sleep(2)
-            os.system("cls")
-            save_progress({"level": 2})
-            Level2(x)  # Player chooses to continue, goes to Level 2, progress is saved.
-        elif playerinp == 2:
-            save_progress({"level": 2})
-            exit()  # Player chooses to exit, terminates program, progress is saved.
-
-    else:
-        typewriterF(
-            "No, you have missed! Fortunately the monster tripped, you get another chance!"
-        )
-
-        # Hint if the first guess is wrong
-        if monster1 > damage:
-            typewriterF("Attack with more power!")
         else:
-            typewriterF("Less power, more technique!")
-
-        damage = int(input("Enter a number 1-" + str(x) + ": "))
-        if abs(monster1 - 1) <= damage <= monster1 + 1:
             typewriterS(
-                "The beast is defeated! You have proved yourself and continue the journey."
+                "Unfortunately, you fail at your attempt to finish off the beast. Your journey ends before it could properly begin."
             )
-            playerinp = int(input("Enter 1 to continue or 2 to exit the game: "))
+            save_progress({"level": 1, "points": 0})
 
-            if playerinp == 1:
-                time.sleep(2)
-                os.system("cls")
-                save_progress({"level": 2})
-                Level2(
-                    x
-                )  # Player chooses to continue, goes to Level 2, progress is saved.
-
-            elif playerinp == 2:
-                save_progress({"level": 2})
-                exit()  # Player chooses to exit, terminates program, progress is saved.
-        else:
-            typewriterS("No luck! Attack was too weak and you have been defeated.")
-            save_progress(
-                {"level": 1}
-            )  # Player fails, progress is set to the level that is failed.
-    """
+    else:
+        typewriterS(
+            "Unfortunately, the sword proved too heavy for your fragile hands, you miss every swing and succumb to the beasts attacks. \n Your journey ends before it could properly begin."
+        )
+        save_progress(
+            {"level": 1, "points": 0}
+        )  # Player fails, progress is set to the level that is failed.
